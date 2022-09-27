@@ -14,12 +14,28 @@ public:
     vector<int> postorderTraversal(TreeNode* root) {
         TreeNode* cur = root;
         stack<TreeNode*> st;
-        while()
+        vector<int> ret;
+        TreeNode* prev = nullptr;
+        while(cur || !st.empty())
+        {
         while(cur)
         {
             st.push(cur);
             cur = cur->left;
         }
-        
+        TreeNode* top = st.top();
+        if(top->right == nullptr || top->right == prev)
+        {
+            st.pop();
+            ret.push_back(top->val);
+            prev = top;
+        }
+        else
+        {
+            cur = top->right;
+        }
+            
+        }
+        return ret;
     }
 };
