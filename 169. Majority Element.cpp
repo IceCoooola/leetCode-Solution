@@ -18,7 +18,30 @@ public:
         return majority;
     }
 };
-
+// class Solution {
+// public:
+//     int majorityElement(vector<int>& nums) {
+//         int most = nums[0];
+//         int count = 1;
+//         for(int i = 1; i < nums.size(); i++)
+//         {
+//             if(nums[i] == most)
+//             {
+//                 count++;
+//             }
+//             else
+//             {
+//                 count--;
+//             }
+//             if(count == 0)
+//             {
+//                 most = nums[i];
+//                 count = 1;
+//             }
+//         }
+//         return most;
+//     }
+// };
 // class Solution {
 //public:
 //    int majorityElement(vector<int>& nums) {
