@@ -1,15 +1,15 @@
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         ret = []
+        if not intervals:
+            return ret
         intervals.sort()
+        ret.append(intervals[0])
         for pair in intervals:
             found = False
-            for i in range(len(ret)):
-                if ret[i][0] <= pair[0] <= ret[i][1] or ret[i][0] <= pair[1] <= ret[i][1]:
-                    ret[i][0] = min(ret[i][0], pair[0])
-                    ret[i][1] = max(ret[i][1], pair[1])
-                    found = True
-                    break
-            if not found:
+            if ret[-1][0] <= pair[0] <= ret[-1][1] or ret[-1][0] <= pair[1] <= ret[-1][1]:
+                ret[-1][0] = min(ret[-1][0], pair[0])
+                ret[-1][1] = max(ret[-1][1], pair[1])
+            else:
                 ret.append(pair)
         return ret
