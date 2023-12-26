@@ -5,9 +5,10 @@ class Solution:
         simplified_path = "/"
         for p in arr:
             if p == "..":
-                ret = ret[1:]
-            elif p != '':
+                ret = ret[0: len(ret) - 1]
+            elif p != '' and p != '.':
                 ret.append(p)
+        
         for p in ret:
             simplified_path += p
             simplified_path += '/'
