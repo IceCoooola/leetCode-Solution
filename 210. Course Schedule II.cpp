@@ -30,10 +30,6 @@ public:
         }
 
         vector<int> ret;
-        for (auto it: in_degree){
-            cout << it.first <<" degree: "<<it.second<<endl;
-            
-        }
 
         while (!q.empty()) {
             int course = q.top();
@@ -41,14 +37,7 @@ public:
             ret.push_back(course);
             for (auto e: mp[course]) {
                 in_degree[e] -= 1;
-            }
-            it = in_degree.begin();
-            while (it != in_degree.end()) {
-            if (it->second == 0){ 
-                q.push(it->first);            
-                it->second -= 1;
-            }
-            it++;
+                if (in_degree[e] == 0) q.push(e);
             }
             }
         if (ret.size() == numCourses){
